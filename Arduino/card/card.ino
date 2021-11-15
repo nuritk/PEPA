@@ -166,9 +166,17 @@ void processMessages() {
     case 'T':
       strtokIndx = strtok(NULL, ","); // height of text
       h = atoi(strtokIndx);     // convert this part to an integer
+      strtokIndx = strtok(NULL, ","); // this continues where the previous call left off
+      red = atoi(strtokIndx);     // convert this part to an integer
+      strtokIndx = strtok(NULL, ","); // this continues where the previous call left off
+      green = atoi(strtokIndx);     // convert this part to an integer
+      strtokIndx = strtok(NULL, ","); // this continues where the previous call left off
+      blue = atoi(strtokIndx);     // convert this part to an integer
+      color = tft.color565(red, green, blue);
       strtokIndx = strtok(NULL, ",");     // the string
       tft.setCursor(x, y);
       tft.setTextSize(h);
+      tft.setTextColor(color);
       tft.print(strtokIndx);
       break;
     case 'b':
